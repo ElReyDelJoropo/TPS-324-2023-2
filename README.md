@@ -54,8 +54,8 @@ El proyecto usa [Cmake](https://cmake.org/) como build system, asi que asegurens
 
 1. ### Clonar el repositorio
 ```bash
-git clone https://www.google.com
-cd TPS
+git clone https://github.com/ElReyDelJoropo/TPS-324-2023-2.git
+cd TPS-324-2023-2
 ```
 
 2. ### Crear la carpeta build y ejecutar cmake para que se configure
