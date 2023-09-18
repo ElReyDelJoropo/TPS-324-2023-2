@@ -8,6 +8,8 @@ void Arbol::insertar(int dato) { _insertarHelper(_raiz, dato); }
 
 void Arbol::imprimir() { _imprimirHelper(_raiz); }
 
+void Arbol::talar() { _limpiar(_raiz); }
+
 void Arbol::_insertarHelper(NodoArbol *&nodo, int dato)
 {
     if (!nodo) {
@@ -42,4 +44,5 @@ void Arbol::_limpiar(NodoArbol *&nodo)
     _limpiar(nodo->izquierda);
 
     delete nodo;
+    nodo = nullptr;
 }

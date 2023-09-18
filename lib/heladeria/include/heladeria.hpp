@@ -1,6 +1,7 @@
 #pragma once
 #include <array>
 #include <ostream>
+#include <vector>
 
 enum Sabores { chocolate, vainilla, fresa, limon, pistacho, menta };
 
@@ -19,5 +20,13 @@ class Heladeria {
     static constexpr int CantidadDeSabores = 6;
 
   private:
+    // Para representar los helados estoy usando un arreglo comun y corriente
+    // de manera que cada elemento corresponde a un sabor, utilize una
+    // enumeracion para indexar el arreglo para mejor claridad
     std::array<int, 6> _sabores;
+
+    void
+    _combinacionesSaboresHelper(std::vector<std::array<int, 3>> &combinaciones,
+                                std::array<int, 3> &combinacion_actual,
+                                int tamano_grupo, int inicio);
 };

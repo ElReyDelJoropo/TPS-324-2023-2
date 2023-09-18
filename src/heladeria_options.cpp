@@ -6,7 +6,9 @@ using std::cout;
 
 void heladeria_opcion_1(Heladeria &heladeria)
 {
-    int sabor = crear_menu({"Vainilla", "Fresa"}, "Escoja el sabor");
+    int sabor = crear_menu(
+        {"Chocolate", "Vainilla", "Fresa", "Limon", "Pistacho", "Menta"},
+        "Escoja el sabor");
     int cantidad =
         leerOpcion("Escriba la cantidad en gramos a aumentar:", cout);
 
@@ -39,5 +41,15 @@ void heladeria_opcion_2(Heladeria &heladeria)
                 "asi :(, intente en otra ocasion\n";
     }
 }
+void generarGrupos(int sabores[], int n, int grupo[], int tam_grupo,
+                   int inicio);
 
-void heladeria_opcion_3(Heladeria &heladeria) {}
+void heladeria_opcion_3(Heladeria &heladeria)
+{
+    // int grupo[3];
+    // int sabores[6] = {1, 2, 3, 4, 5, 6};
+    //
+    // generarGrupos(sabores, 6, grupo, 3, 0);
+
+    heladeria.conoDisponibles();
+}

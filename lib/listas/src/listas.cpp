@@ -47,4 +47,15 @@ void Lista::imprimir()
     }
 }
 
-void unir(Lista &lhs, Lista &rhs) {}
+void unir(Lista &lhs, Lista &rhs)
+{
+    auto temp = lhs._cabeza;
+
+    while (temp->next)
+        temp = temp->next;
+
+    // FIXME: aqui faltan validaciones, como por ejemplo, verificar si se paso a
+    // la funcion dos veces la misma lista, lo que ocasionaria una lista
+    // circular
+    temp->next = rhs._cabeza;
+}

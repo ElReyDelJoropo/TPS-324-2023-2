@@ -20,5 +20,6 @@ void arbol_opcion_2(Arbol &arbol)
 
 void arbol_opcion_3(Arbol &arbol)
 {
-    // XXX: no se que es "talar" un arbol binario
+    arbol.talar();
+    std::cout << "Arbol talado satisfactoriamente";
 }

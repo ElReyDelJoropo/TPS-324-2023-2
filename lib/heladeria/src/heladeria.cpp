@@ -1,5 +1,8 @@
 #include "heladeria.hpp"
+
 #include <array>
+#include <iostream>
+#include <vector>
 using std::array;
 
 #include <ostream>
@@ -30,9 +33,10 @@ void Heladeria::incrementaHelado(Sabores sabor, int cantidad)
 bool Heladeria::esPosibleCono(std::array<Sabores, 3> sabores)
 {
     for (auto sabor : sabores) {
-        if (_sabores.at(sabor) < 25)
+        if (_sabores.at(sabor) < 25) {
+            _sabores.at(sabor) -= 25;
             return false;
-        _sabores.at(sabor) -= 25;
+        }
     }
     return true;
 }
@@ -56,4 +60,44 @@ array<Sabores, 3> Heladeria::parsearSabores(string input)
     }
 
     return ret;
+}
+
+void Heladeria::conoDisponibles()
+{
+    std::array<int, 3> grupo;
+    std::vector<std::array<int, 3>> combinaciones;
+    std::array<int, 3> combinacion_actual;
+
+    _combinacionesSaboresHelper(combinaciones, combinacion_actual, 3, 0);
+
+    std::cout << "Sabores:()" << combinaciones.size() << '\n';
+    for (auto &combinacion : combinaciones) {
+        for (auto sabor : combinacion) {
+            std::cout << static_cast<Sabores>(sabor) << ", ";
+            // std::cout << sabor << ' ';
+        }
+        std::cout << '\n';
+    }
+}
+
+void Heladeria::_combinacionesSaboresHelper(
+    std::vector<std::array<int, 3>> &combinaciones,
+    std::array<int, 3> &combinacion_actual, int tamano_grupo, int inicio)
+{
+    // El algoritmo se basa en lo siguiente: dado un conjunto de n elementos y
+    // quiero seleccionar m elementos de ese grupo, de forma que el orden de los
+    // mismos no afecta el resultado (es decir, es una combinacion), hallar los
+    // k elementos que se forman, para este caso particular m = 3
+    if (tamano_grupo == 0) {
+        combinaciones.push_back(combinacion_actual);
+        return;
+    }
+
+    for (int i = inicio; i != _sabores.size(); ++i) {
+        if (_sabores[i] >= 25) {
+            combinacion_actual.at(tamano_grupo - 1) = i;
+            _combinacionesSaboresHelper(combinaciones, combinacion_actual,
+                                        tamano_grupo - 1, i + 1);
+        }
+    }
 }

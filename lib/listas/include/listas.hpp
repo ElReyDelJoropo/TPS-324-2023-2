@@ -1,5 +1,10 @@
 #pragma once
 
+/**
+ * @class Lista
+ * @brief Una lista enlazada simple
+ *
+ */
 class Lista {
     friend void unir(Lista &lhs, Lista &rhs);
 

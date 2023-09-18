@@ -5,6 +5,8 @@
 #include "lista_options.hpp"
 #include "listas.hpp"
 #include "menu.hpp"
+#include "pila_options.hpp"
+#include "pilas.hpp"
 
 #include <array>
 #include <cstring>
@@ -27,7 +29,7 @@ int main(int argc, char *argv[])
     if (argc != 2 || strcmp(argv[1], "--help") == 0) {
         cerr << "Usage: TPS_UNA_2023_2 <opcion>\nopcion: el ejercicio que "
                 "desea ejecutar\nPara este caso contamos con los siguientes "
-                "ejercicios:\n1 - Heladeria\n2 - Listas\n3 - Pilas";
+                "ejercicios:\n1 - Heladeria\n2 - Listas\n3 - Pilas 4 - Arboles";
         return 1;
     }
 
@@ -116,6 +118,25 @@ int listas_main()
 int pilas_main()
 {
     cout << "Bienvenido a las pilas mas pro del mundo\n";
+
+    int result = 0;
+    Pila pila = Pila();
+
+    while (result != 3) {
+        result = crear_menu({"Insertar elemento", "Mostrar pila", "Salir"});
+
+        switch (result) {
+        case 1:
+            pila_opcion_1(pila);
+            break;
+        case 2:
+            pila_opcion_2(pila);
+            break;
+        default:
+            break;
+        }
+    }
+
     return 0;
 }
 

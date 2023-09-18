@@ -7,6 +7,7 @@ class Arbol {
 
     void insertar(int dato);
     void imprimir();
+    void talar();
 
   private:
     struct NodoArbol {
